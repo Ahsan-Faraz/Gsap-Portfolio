@@ -24,6 +24,8 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+import Image from "next/image"
+
 const WorkExperienceSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
@@ -34,7 +36,7 @@ const WorkExperienceSection = () => {
   const animatedLineRef = useRef<HTMLDivElement>(null)
 
   const experience = {
-    company: "NovaSphere Sol",
+    company: "NovaSphere Solutions",
     position: "Junior Software Engineer",
     duration: "April 2025 - Present",
     location: "Hybrid",
@@ -178,10 +180,13 @@ const WorkExperienceSection = () => {
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{ opacity: 0.15 }}
       >
-        <img 
+        <Image 
           src="/Novalogo.png" 
-          alt="NovaSphere Sol Logo" 
-          className="w-[800px] h-[800px] object-contain"
+          alt="NovaSphere Solutions Logo" 
+          width={800}
+          height={800}
+          className="object-contain"
+          loading="lazy"
         />
       </div>
 
@@ -224,30 +229,16 @@ const WorkExperienceSection = () => {
             CURRENTLY WORKING AT
           </div>
 
-          {/* Company Name - Mask reveal with half-and-half colors */}
+          {/* Company Name - Clean white text with subtle glow */}
           <div 
             ref={companyNameRef}
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mb-16"
+            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mb-16 text-white"
             style={{ 
               fontFamily: "Urbanist, sans-serif",
-              textShadow: "0 0 100px rgba(255, 255, 255, 0.1)"
+              textShadow: "0 0 60px rgba(255, 255, 255, 0.3), 0 0 120px rgba(255, 255, 255, 0.1)"
             }}
           >
-            {experience.company.toUpperCase().split('').map((char, index) => (
-              <span
-                key={index}
-                className="half-split-char"
-                style={{
-                  background: `linear-gradient(90deg, #2E073F 50%, white 50%)`,
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  color: 'transparent'
-                }}
-              >
-                {char}
-              </span>
-            ))}
+            {experience.company.toUpperCase()}
           </div>
         </div>
 

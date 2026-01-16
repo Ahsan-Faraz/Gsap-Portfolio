@@ -1,36 +1,34 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Mail, Download, ExternalLink } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function HeroSection() {
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-  }
-
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Full Background Image */}
-      <motion.div 
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("/background (2).jpg")',
-        }}
-      >
+      <div className="absolute inset-0">
+        <Image
+          src="/background (2).jpg"
+          alt="Background"
+          fill
+          priority
+          quality={85}
+          className="object-cover object-center"
+          sizes="100vw"
+        />
         {/* Light overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30" />
         
         {/* Gradient overlay from left to enhance text area only */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-      </motion.div>
+      </div>
 
       <div className="relative z-10 min-h-screen flex items-center">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
@@ -64,7 +62,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <h2 className="text-base md:text-lg">
-                  <span className="animated-text-fill-hero">Software Engineer | AI & Web Enthusiast</span>
+                  <span className="animated-text-fill-hero">Full Stack Developer | DevOps & Cloud Enthusiast</span>
                 </h2>
               </motion.div>
 
@@ -90,8 +88,11 @@ export default function HeroSection() {
                   variant="outline"
                   size="lg"
                   className="border-2 border-white/30 text-white hover:border-white hover:bg-white hover:text-black bg-transparent font-medium px-8 py-3 rounded-none transition-all duration-300 uppercase tracking-wider"
+                  asChild
                 >
-                  Resume
+                  <a href="/Ahsan-Faraz  (1).pdf" target="_blank" rel="noopener noreferrer">
+                    Resume
+                  </a>
                 </Button>
                 <Button
                   onClick={scrollToProjects}
@@ -110,9 +111,9 @@ export default function HeroSection() {
                 className="flex space-x-4 pt-8"
               >
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Mail, href: "#contact", label: "Email" },
+                  { icon: Github, href: "https://github.com/Ahsan-Faraz", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/ahsan-faraz-34138b319/", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:ahsanfaraza674@gmail.com", label: "Email" },
                 ].map(({ icon: Icon, href, label }) => (
                   <motion.a
                     key={label}

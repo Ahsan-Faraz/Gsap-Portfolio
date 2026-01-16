@@ -398,29 +398,30 @@ nav {
   }
 }
 
-/* Hero subtitle animation with white and green */
+/* Hero subtitle animation with clean white and green gradient */
 .animated-text-fill-hero {
-  font-weight: 400;
-  letter-spacing: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.3em;
   display: block;
-  text-shadow: 0 0 80px rgba(255,255,255,.5);
   text-transform: uppercase;
   
-  /* Clip Background Image */
+  /* Clean gradient - white to green */
   background: linear-gradient(
     90deg,
-    #ffffff, #3E5F44, #ffffff, #3E5F44,
-    #ffffff, #3E5F44, #ffffff, #3E5F44,
-    #ffffff, #3E5F44, #ffffff, #3E5F44
+    #ffffff 0%,
+    #ffffff 40%,
+    #3E5F44 50%,
+    #ffffff 60%,
+    #ffffff 100%
   );
-  background-size: 400% 100%;
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   
   /* Animate Background Image */
   -webkit-text-fill-color: transparent;
-  -webkit-animation: aitf-hero 80s linear infinite;
-  animation: aitf-hero 80s linear infinite;
+  -webkit-animation: aitf-hero 4s ease-in-out infinite;
+  animation: aitf-hero 4s ease-in-out infinite;
   
   /* Activate hardware acceleration for smoother animations */
   -webkit-transform: translate3d(0,0,0);
@@ -441,12 +442,14 @@ nav {
 }
 
 @-webkit-keyframes aitf-hero {
-  0% { background-position: 0% 50%; }
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
 @keyframes aitf-hero {
-  0% { background-position: 0% 50%; }
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 /* Expertise Cards Hover Animation Styles */

@@ -1,7 +1,8 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram, Twitter, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
@@ -15,10 +16,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-    { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
-    { name: "GitHub", icon: Github, href: "https://github.com" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/ahsan-faraz-34138b319/" },
+    { name: "GitHub", icon: Github, href: "https://github.com/Ahsan-Faraz" },
+    { name: "Email", icon: Mail, href: "mailto:ahsanfaraza674@gmail.com" },
   ];
 
   const navigationLinks = [
@@ -92,10 +92,12 @@ const Footer = () => {
               {/* Logo from Header */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                  <img
+                  <Image
                     src="/logo.png"
                     alt="Ahsan Faraz Logo"
-                    className="w-7 h-7 object-contain"
+                    width={28}
+                    height={28}
+                    className="object-contain"
                   />
                 </div>
                 <h3 className="text-xl font-bold tracking-wide">AHSAN FARAZ</h3>

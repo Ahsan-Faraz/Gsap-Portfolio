@@ -249,7 +249,7 @@ export default function Navbar() {
                       animate={{ y: emailCopied ? -25 : 0, opacity: emailCopied ? 0 : 1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      ahsan.faraz@gmail.com
+                      ahsanfaraza674@gmail.com
                     </motion.span>
                     <motion.span
                       className="absolute inset-0 flex items-center justify-center"
