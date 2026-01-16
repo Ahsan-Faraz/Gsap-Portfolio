@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -13,9 +10,6 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'gsap', '@react-three/fiber', '@react-three/drei'],
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
   },
 }
 
