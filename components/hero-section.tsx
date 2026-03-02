@@ -62,7 +62,9 @@ export default function HeroSection() {
             >
               <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-[0.2em] uppercase leading-relaxed">
                 <span className="animated-text-fill-hero">Full Stack Developer</span>
-                <br />
+              </h2>
+              <div className="w-12 h-[1px] bg-white/40 my-2"></div>
+              <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-[0.2em] uppercase leading-relaxed">
                 <span className="animated-text-fill-hero">DevOps & Cloud Enthusiast</span>
               </h2>
             </motion.div>
@@ -77,7 +79,7 @@ export default function HeroSection() {
               <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
-                Turning complex ideas into interactive web experiences with modern technologies and clean architecture.
+                Turning complex ideas into interactive web<br />experiences with modern technologies and clean architecture.
               </p>
             </motion.div>
 
