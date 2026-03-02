@@ -172,7 +172,7 @@ const WorkExperienceSection = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} id="work-experience" className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden font-[Urbanist] bg-black">
+    <section ref={sectionRef} id="work-experience" className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden font-['Space_Grotesk'] bg-black">
       
       {/* Background Logo Watermark */}
       <div 
@@ -202,8 +202,9 @@ const WorkExperienceSection = () => {
             className="inline-block"
           >
             <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight"
-              style={{ fontFamily: 'Urbanist, sans-serif' }}>
-              WORK EXPERIENCE
+              style={{ fontFamily: 'Syne, sans-serif' }}>
+              <span className="sm:hidden">WORK</span>
+              <span className="hidden sm:inline">WORK EXPERIENCE</span>
             </h2>
             <div className="w-32 h-1 bg-white mx-auto mb-6 rounded-full"></div>
           </motion.div>
@@ -212,7 +213,7 @@ const WorkExperienceSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-[Urbanist]"
+            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-['Space_Grotesk']"
           >
             My professional journey and the story behind my passion for creating 
             innovative digital solutions and meaningful user experiences.

@@ -72,8 +72,8 @@ const WordsThatInspireSection = () => {
     },
     {
       id: 2,
-      text: "Innovation distinguishes between a leader and a follower.",
-      author: "Steve Jobs", 
+      text: "First, solve the problem. Then, write the code.",
+      author: "John Johnson", 
       category: "Innovation",
       icon: Lightbulb
     },
@@ -374,7 +374,7 @@ const WordsThatInspireSection = () => {
     <section 
       ref={sectionRef}
       id="inspire" 
-      className="min-h-screen bg-black text-white font-[Urbanist] relative overflow-hidden"
+      className="min-h-screen bg-black text-white font-['Space_Grotesk'] relative overflow-hidden"
     >
       {/* Desktop Design (1350px+) - Matter.js with transparent cards */}
       <div className="hidden 2xl:block">
@@ -522,16 +522,6 @@ const WordsThatInspireSection = () => {
 
       {/* Smaller Screens Design (0px - 1350px) - Beautiful cards */}
       <div className="2xl:hidden">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:50px_50px] animate-pulse"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_49%,rgba(255,255,255,0.03)_50%,transparent_51%)] bg-[length:100px_100px]"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_49%,rgba(255,255,255,0.03)_50%,transparent_51%)] bg-[length:100px_100px]"></div>
-        </div>
-
-        {/* Floating Elements - Client-side only to avoid hydration mismatch */}
-        <FloatingElements />
-
         <div className="relative z-10 min-h-screen flex flex-col">
           {/* Main Content Area */}
           <div className="flex-1 flex items-center justify-center px-4 lg:px-8 pb-16">

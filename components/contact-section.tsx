@@ -1,9 +1,21 @@
 "use client"
-import { useRef, useState } from "react";
+import { useRef, useState, Suspense, lazy } from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "./TitleHeader";
-import ContactExperience from "./models/contact/ContactExperience";
+
+const ContactExperience = lazy(() => import("./models/contact/ContactExperience"));
+
+function ContactModelFallback() {
+  return (
+    <div className="w-full h-full flex items-center justify-center min-h-96">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        <p className="text-white/60 text-sm font-mono">Loading 3D Model...</p>
+      </div>
+    </div>
+  );
+}
 
 const ContactSection = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -140,7 +152,9 @@ const ContactSection = () => {
           </div>
           <div className="xl:col-span-7 min-h-96">
             <div className="w-full h-full hover:cursor-grab rounded-3xl overflow-hidden border border-white/20" style={{ backgroundColor: '#FF9B00' }}>
-              <ContactExperience />
+              <Suspense fallback={<ContactModelFallback />}>
+                <ContactExperience />
+              </Suspense>
             </div>
           </div>
         </div>

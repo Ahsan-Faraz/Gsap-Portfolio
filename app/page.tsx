@@ -24,16 +24,10 @@ const ContactSection = dynamic(() => import("@/components/contact-section"), {
   loading: () => <div className="min-h-screen bg-black" />,
 })
 const Footer = dynamic(() => import("@/components/footer"))
-const ParticleBackground = dynamic(() => import("@/components/particle-background"), {
-  ssr: false,
-})
 
 export default function Portfolio() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Particle Background */}
-      <ParticleBackground />
-
       {/* Navigation */}
       <Navbar />
 

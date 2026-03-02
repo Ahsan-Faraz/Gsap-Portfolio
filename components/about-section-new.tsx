@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Code, Layers, ShoppingBag } from "lucide-react"
@@ -39,6 +39,8 @@ function TypewriterText() {
   const [displayedText, setDisplayedText] = useState("")
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   
   const fullText = `I'm a passionate Software Engineering student at FAST NUCES, focused on creating meaningful, user-first digital solutions. I specialize in designing and developing modern web applications that are visually engaging, scalable, and reliable.
 
@@ -46,16 +48,32 @@ From intuitive user interfaces to streamlined backend systems, I love solving re
 
 I'm always eager to collaborate on impactful projects that push boundaries and deliver real value.`
 
+  // Start typing only when element is visible in viewport
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (containerRef.current) observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
     if (currentIndex < fullText.length) {
       const timeout = setTimeout(() => {
         setDisplayedText(fullText.slice(0, currentIndex + 1))
         setCurrentIndex(currentIndex + 1)
-      }, 30) // Typing speed
+      }, 15) // Faster typing speed (15ms)
       
       return () => clearTimeout(timeout)
     }
-  }, [currentIndex, fullText])
+  }, [currentIndex, fullText, isVisible])
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -66,7 +84,7 @@ I'm always eager to collaborate on impactful projects that push boundaries and d
   }, [])
 
   return (
-    <div className="text-lg leading-8 text-gray-300 whitespace-pre-wrap">
+    <div ref={containerRef} className="text-lg leading-8 text-gray-300 whitespace-pre-wrap">
       {displayedText}
       <span className={`inline-block w-0.5 h-6 bg-white ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>
         |
@@ -254,12 +272,12 @@ export default function AboutSection() {
           <h2 
             ref={titleRef}
             className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight"
-            style={{ fontFamily: 'Urbanist, sans-serif' }}
+            style={{ fontFamily: 'Syne, sans-serif' }}
           >
             ABOUT
           </h2>
           <div className="w-32 h-1 bg-white mx-auto mb-6 rounded-full"></div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-[Urbanist]">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-['Space_Grotesk']">
             My personal journey and the story behind my passion for creating 
             innovative digital solutions and meaningful user experiences.
           </p>
@@ -326,7 +344,7 @@ export default function AboutSection() {
             <div className="space-y-0">
               <h3 
                 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight"
-                style={{ fontFamily: 'Urbanist, sans-serif' }}
+                style={{ fontFamily: 'Syne, sans-serif' }}
               >
                 Crafting Digital
                 <span className="block text-gray-400">Experiences</span>
@@ -358,7 +376,7 @@ export default function AboutSection() {
           
           <ul 
             ref={skillsRef}
-            className="expertise-grid grid grid-cols-1 lg:grid-cols-3 gap-6 list-none p-0 m-0 relative w-full"
+            className="expertise-grid grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 list-none p-0 m-0 relative w-full"
           >
             {skills.map((skill, index) => {
               const IconComponent = skill.icon
@@ -368,21 +386,21 @@ export default function AboutSection() {
                   className="expertise-item p-4"
                   style={{ '--hue': skill.hue } as React.CSSProperties}
                 >
-                  <article className="expertise-article text-gray-300 p-8 grid gap-4 relative rounded-2xl min-h-[400px]">
+                  <article className="expertise-article text-gray-300 p-4 sm:p-8 grid gap-2 sm:gap-4 relative rounded-xl sm:rounded-2xl min-h-[220px] sm:min-h-[400px]">
                     {/* Animated Icon */}
-                    <div className="relative mb-6">
-                      <div className="w-20 h-20 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg">
-                        <IconComponent className="w-10 h-10" />
+                    <div className="relative mb-3 sm:mb-6">
+                      <div className="w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg">
+                        <IconComponent className="w-6 h-6 sm:w-10 sm:h-10" />
                       </div>
                     </div>
                     
                     {/* Content */}
                     <div className="flex flex-col flex-1">
-                      <h3 className="text-white text-2xl font-semibold m-0 mb-4 font-['Urbanist']">
+                      <h3 className="text-white text-base sm:text-2xl font-semibold m-0 mb-2 sm:mb-4 font-['Space_Grotesk']">
                         {skill.title}
                       </h3>
                       
-                      <p className="m-0 leading-relaxed font-['Urbanist'] mb-6 flex-1">
+                      <p className="m-0 leading-relaxed font-['Space_Grotesk'] mb-3 sm:mb-6 flex-1 text-xs sm:text-base hidden sm:block">
                         {skill.description}
                       </p>
 
@@ -533,24 +551,41 @@ export default function AboutSection() {
         /* About Card Styles */
         .about-card-container {
           height: 100vh;
-          width: 100vw;
+          width: 100%;
           max-height: 650px;
           max-width: 520px;
-          min-height: 500px;
-          min-width: 400px;
+          min-height: 400px;
           display: flex;
           justify-content: center;
           align-items: center;
           margin: 0 auto;
         }
 
+        @media (max-width: 480px) {
+          .about-card-container {
+            min-height: 350px;
+            max-height: 500px;
+            width: 100%;
+            padding: 0 1rem;
+          }
+        }
+
         .about-border {
           height: 479px;
           width: 380px;
+          max-width: 100%;
           background: transparent;
           border-radius: 35px;
           transition: border 1s;
           position: relative;
+        }
+
+        @media (max-width: 480px) {
+          .about-border {
+            height: 400px;
+            width: 300px;
+            max-width: calc(100vw - 3rem);
+          }
         }
 
         .about-border:hover {
@@ -560,6 +595,7 @@ export default function AboutSection() {
         .about-card {
           height: 489px;
           width: 390px;
+          max-width: 100%;
           background: grey;
           border-radius: 35px;
           transition: background 0.8s;
@@ -572,6 +608,14 @@ export default function AboutSection() {
           position: relative;
         }
 
+        @media (max-width: 480px) {
+          .about-card {
+            height: 410px;
+            width: 310px;
+            max-width: calc(100vw - 2.5rem);
+          }
+        }
+
         .about-card::before {
           content: '';
           position: absolute;
@@ -580,7 +624,7 @@ export default function AboutSection() {
           right: 0;
           bottom: 0;
           background: url('/placeholder-user.png') center center no-repeat;
-          background-size: 390px;
+          background-size: cover;
           filter: grayscale(100%) contrast(1.2) brightness(0.9);
           transition: all 0.8s ease;
           z-index: 1;
@@ -588,7 +632,7 @@ export default function AboutSection() {
 
         .about-card:hover::before {
           background: url('/placeholder-user.png') left center no-repeat;
-          background-size: 780px;
+          background-size: 200%;
         }
 
         .about-card:hover .about-name {
@@ -600,7 +644,7 @@ export default function AboutSection() {
         }
 
         .about-name {
-          font-family: 'Urbanist', sans-serif;
+          font-family: 'Syne', sans-serif;
           color: white;
           margin: 20px;
           opacity: 0;

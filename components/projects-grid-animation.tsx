@@ -376,12 +376,12 @@ export default function ProjectsGridAnimation() {
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 px-4">
           <h2
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight"
-            style={{ fontFamily: "Urbanist, sans-serif" }}
+            style={{ fontFamily: "Syne, sans-serif" }}
           >
             PROJECTS
           </h2>
           <div className="w-24 sm:w-32 h-1 bg-white mx-auto mb-4 sm:mb-6 rounded-full"></div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-[Urbanist] px-4 sm:px-0">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-['Space_Grotesk'] px-4 sm:px-0">
             A showcase of my development projects, featuring modern web
             applications built with cutting-edge technologies and innovative
             solutions.
@@ -393,7 +393,7 @@ export default function ProjectsGridAnimation() {
           <ul
             className="projects-grid"
             onMouseMove={(e) => {
-              if (window.innerWidth >= 768) {
+              if (window.innerWidth >= 770) {
                 // Only on desktop
                 const closest = (e.target as Element).closest("li");
                 if (closest) {
@@ -433,7 +433,7 @@ export default function ProjectsGridAnimation() {
               );
 
               return (
-                <li key={project.id} data-active={isActive}>
+                <li key={project.id} data-active={isActive} data-category={project.category}>
                   <article>
                     <h3>{project.title}</h3>
                     {!isActive && <IconComponent />}
@@ -491,7 +491,7 @@ export default function ProjectsGridAnimation() {
           transition: grid-template-columns 0.6s cubic-bezier(0, 0, 0.2, 1);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-grid {
             display: flex;
             flex-direction: column;
@@ -526,6 +526,24 @@ export default function ProjectsGridAnimation() {
             height: 70px;
             max-height: 70px;
             border-color: #333;
+          }
+
+          /* Category accent border colors for collapsed cards */
+          .projects-grid li:not([data-active="true"])[data-category="Full-Stack"] {
+            border-left: 3px solid rgba(99, 102, 241, 0.6);
+          }
+          .projects-grid li:not([data-active="true"])[data-category="E-Commerce"] {
+            border-left: 3px solid rgba(236, 72, 153, 0.6);
+          }
+          .projects-grid li:not([data-active="true"])[data-category="Backend"] {
+            border-left: 3px solid rgba(16, 185, 129, 0.6);
+          }
+          .projects-grid li:not([data-active="true"])[data-category="Frontend"] {
+            border-left: 3px solid rgba(251, 191, 36, 0.6);
+          }
+
+          .projects-grid article h3 {
+            rotate: 0deg !important;
           }
         }
 
@@ -585,7 +603,7 @@ export default function ProjectsGridAnimation() {
           border: 1px solid #333;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-grid li {
             min-width: clamp(1.5rem, 8cqi, 80px);
             border-radius: 6px;
@@ -732,7 +750,7 @@ export default function ProjectsGridAnimation() {
           flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-grid article .content-container .typewriter-text {
             flex: 1;
             margin-bottom: 0.75rem;
@@ -774,7 +792,7 @@ export default function ProjectsGridAnimation() {
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-grid
             li:not([data-active="true"])
             article
@@ -830,7 +848,7 @@ export default function ProjectsGridAnimation() {
           z-index: 2;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-grid li:not([data-active="true"]) article h3 {
             position: absolute;
             top: 50%;
@@ -928,7 +946,7 @@ export default function ProjectsGridAnimation() {
           mask: radial-gradient(100% 100% at 100% 0, #fff, rgba(0, 0, 0, 0.3));
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 770px) {
           .projects-section {
             min-height: auto;
             height: auto;

@@ -19,8 +19,8 @@ export default function RootLayout({
       <head>
         <style>{`
 html {
-  font-family: "Urbanist", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
-  --font-sans: "Urbanist", sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
   --font-mono: ${GeistMono.variable};
 }
         `}</style>

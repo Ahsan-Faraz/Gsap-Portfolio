@@ -134,7 +134,7 @@ function RunningTechStack() {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 
                 <IconComponent className="w-6 h-6 text-white/80 group-hover:text-white transition-all duration-300 relative z-10" />
-                <span className="font-semibold text-white/90 group-hover:text-white font-['Urbanist'] text-sm relative z-10 tracking-wide">
+                <span className="font-semibold text-white/90 group-hover:text-white font-['Space_Grotesk'] text-sm relative z-10 tracking-wide">
                   {tech.name}
                 </span>
                 
@@ -177,7 +177,7 @@ function RunningTechStack() {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 
                 <IconComponent className="w-6 h-6 text-white/80 group-hover:text-white transition-all duration-300 relative z-10" />
-                <span className="font-semibold text-white/90 group-hover:text-white font-['Urbanist'] text-sm relative z-10 tracking-wide">
+                <span className="font-semibold text-white/90 group-hover:text-white font-['Space_Grotesk'] text-sm relative z-10 tracking-wide">
                   {tech.name}
                 </span>
                 
@@ -196,7 +196,7 @@ function RunningTechStack() {
 function SkillCard({ category, index }: { category: any; index: number }) {
   return (
     <div 
-      className="skill-card group cursor-pointer relative rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-700 ease-out min-h-[450px] flex flex-col overflow-hidden transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10"
+      className="skill-card group cursor-pointer relative rounded-2xl sm:rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-700 ease-out min-h-[280px] sm:min-h-[450px] flex flex-col overflow-hidden transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10"
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)',
         backdropFilter: 'blur(20px)',
@@ -209,11 +209,11 @@ function SkillCard({ category, index }: { category: any; index: number }) {
       {/* Animated border glow */}
       <div className="absolute inset-0 rounded-3xl border border-transparent bg-gradient-to-r from-blue-400/0 via-purple-400/0 to-cyan-400/0 group-hover:from-blue-400/30 group-hover:via-purple-400/30 group-hover:to-cyan-400/30 transition-all duration-700" style={{ mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'exclude' }} />
       
-      <div className="flex flex-col h-full p-8 relative z-10">
+      <div className="flex flex-col h-full p-4 sm:p-8 relative z-10">
         {/* Enhanced Icon with Glassy Effect */}
-        <div className="relative mb-8">
+        <div className="relative mb-4 sm:mb-8">
           <div 
-            className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden"
+            className="w-14 h-14 sm:w-24 sm:h-24 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden"
             style={{
               background: `linear-gradient(135deg, ${category.color.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('-500', ', 0.3)').replace('-600', ', 0.1)')})`,
               backdropFilter: 'blur(10px)',
@@ -224,7 +224,7 @@ function SkillCard({ category, index }: { category: any; index: number }) {
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
             
             <category.icon 
-              className="w-12 h-12 text-white/90 group-hover:text-white transition-all duration-500 relative z-10 drop-shadow-lg" 
+              className="w-7 h-7 sm:w-12 sm:h-12 text-white/90 group-hover:text-white transition-all duration-500 relative z-10 drop-shadow-lg" 
             />
             
             {/* Floating particles effect */}
@@ -242,24 +242,24 @@ function SkillCard({ category, index }: { category: any; index: number }) {
         {/* Content */}
         <div className="flex-1 flex flex-col">
           <h3 
-            className="relative text-2xl font-bold text-white mb-6 transition-all duration-500 ease-in-out font-mono tracking-wide after:content-[''] after:w-[60px] after:h-[3px] after:block after:bg-white/30 after:mt-4 after:transition-all after:duration-500 group-hover:after:w-full group-hover:after:bg-white after:rounded-full after:shadow-lg after:shadow-white/20"
+            className="relative text-base sm:text-2xl font-bold text-white mb-3 sm:mb-6 transition-all duration-500 ease-in-out font-mono tracking-wide after:content-[''] after:w-[40px] sm:after:w-[60px] after:h-[2px] sm:after:h-[3px] after:block after:bg-white/30 after:mt-2 sm:after:mt-4 after:transition-all after:duration-500 group-hover:after:w-full group-hover:after:bg-white after:rounded-full after:shadow-lg after:shadow-white/20"
             style={{ fontFamily: 'JetBrains Mono, Fira Code, SF Mono, Monaco, Inconsolata, Roboto Mono, monospace' }}
           >
             {category.title}
           </h3>
           <p 
-            className="text-white/70 text-base leading-relaxed flex-1 transition-all duration-500 ease-in-out group-hover:text-white/90 font-mono mb-8"
+            className="text-white/70 text-xs sm:text-base leading-relaxed flex-1 transition-all duration-500 ease-in-out group-hover:text-white/90 font-mono mb-4 sm:mb-8 hidden sm:block"
             style={{ fontFamily: 'JetBrains Mono, Fira Code, SF Mono, Monaco, Inconsolata, Roboto Mono, monospace' }}
           >
             {category.description}
           </p>
           
           {/* Enhanced Skills Tags with Glassy Effect */}
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-wrap gap-1.5 sm:gap-3 mb-4 sm:mb-6">
             {category.skills?.map((skill: string) => (
               <span 
                 key={skill} 
-                className="relative text-xs px-4 py-2 rounded-2xl text-white/80 font-mono transition-all duration-500 group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-white/10 overflow-hidden"
+                className="relative text-[10px] sm:text-xs px-2 py-1 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl text-white/80 font-mono transition-all duration-500 group-hover:text-white group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-white/10 overflow-hidden"
                 style={{ 
                   fontFamily: 'JetBrains Mono, Fira Code, SF Mono, Monaco, Inconsolata, Roboto Mono, monospace',
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
@@ -373,19 +373,19 @@ export default function SkillsSection() {
               <h2
                 ref={titleRef}
                 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight"
-                style={{ fontFamily: 'Urbanist, sans-serif' }}
+                style={{ fontFamily: 'Syne, sans-serif' }}
               >
                 SKILLS
               </h2>
               <div className="w-32 h-1 bg-white mx-auto mb-6 rounded-full"></div>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-[Urbanist]">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-['Space_Grotesk']">
                 My technical expertise and core competencies in modern web development, 
                 programming languages, and industry-standard tools and frameworks.
               </p>
             </div>
 
                     {/* Skill Cards Grid - 3 per row */}
-            <div ref={skillsRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+            <div ref={skillsRef} className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-20">
               {skillCategories.map((category, index) => (
                 <SkillCard
                   key={category.title}

@@ -112,7 +112,7 @@ export default function Navbar() {
                 <motion.button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative font-medium transition-all duration-300 group nav-item font-[Urbanist] tracking-wide ${
+                  className={`relative font-medium transition-all duration-300 group nav-item font-['Space_Grotesk'] tracking-wide ${
                     isScrolled ? "text-sm" : "text-sm"
                   } ${
                     activeSection === item.href.substring(1)
@@ -226,7 +226,7 @@ export default function Navbar() {
                   <motion.button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium font-[Urbanist] tracking-wide transition-all duration-300 ${
+                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium font-['Space_Grotesk'] tracking-wide transition-all duration-300 ${
                       activeSection === item.href.substring(1)
                         ? "text-white bg-white/10"
                         : "text-white/70 hover:text-white hover:bg-white/5"
